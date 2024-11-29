@@ -542,6 +542,12 @@
 					"wide": {
 						"css": " &:not(.alignfull){max-width: var(--wp--style--global--wide-size) !important;}"
 					}
+				},
+				"spacing": {
+					"margin": {
+						"top": "30px",
+						"bottom": "30px"
+					}
 				}
 			},
 			"core/site-tagline": {
