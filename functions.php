@@ -17,6 +17,8 @@ add_action( 'get_footer', 'load_components_footer' );
 // A N E X O S
 /* anexo para cargar el css que se usa en todas las páginas */
 require_once(get_template_directory() . '/functions/global-css.php');
+// Anexo para definir los componentes personalizados en las plantillas
+require_once(get_template_directory() . '/functions/templates.php');
 
 function renata_theme_support(){ 
     
