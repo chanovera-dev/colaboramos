@@ -1,2 +1,3 @@
 /* post content */
 .post .content{padding:40px 0;}
+.post .content > *{max-width:645px;margin-inline:auto;}
