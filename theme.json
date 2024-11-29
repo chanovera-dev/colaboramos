@@ -600,6 +600,9 @@
 				"spacing": {
 					"margin": {
 						"bottom": "3rem"
+					},
+					"padding": {
+						"left": "2rem"
 					}
 				}
 			}
