@@ -242,7 +242,7 @@
 			"core/code": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|fira-code",
-					"fontSize": "var:preset|font-size|medium",
+					"fontSize": "var:preset|font-size|large",
 					"fontWeight": "300"
 				},
 				"color": {
@@ -289,7 +289,7 @@
 			},
 			"core/comment-content": {
 				"typography": {
-					"fontSize": "var:preset|font-size|medium"
+					"fontSize": "var:preset|font-size|large"
 				},
 				"spacing": {
 					"margin": {
