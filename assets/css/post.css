@@ -1,7 +1,8 @@
 /* post heading */
-.post .main-title{margin-block-start:.67em;margin-block-end:.67em;max-width:645px;margin-inline:auto;}
+.post .main-title{margin-block-start:.67em;max-width:645px;margin-inline:auto;}
 
 /* post content */
 .post .content{padding:40px 0;}
 .post .content > *{max-width:645px;margin-block-start:1.2rem;margin-inline:auto;}
+.post .content > *:first-child{margin-block-start:0;}
 .post .content :is(p){font-size:clamp(1.125rem, 1.125rem + ((1vw - 0.2rem) * 0.392), 1.375rem);}
