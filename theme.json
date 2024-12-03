@@ -193,8 +193,9 @@
 		"spacing": {
 			"blockGap": "1.2rem",
 			"padding": {
-				"left": "var:preset|spacing|50",
-				"right": "var:preset|spacing|50"
+				"top": "var:preset|spacing|.67em",
+				"left": "var:preset|spacing|0",
+				"right": "var:preset|spacing|0"
 			}
 		},
 		"typography": {
