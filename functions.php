@@ -19,6 +19,8 @@ add_action( 'get_footer', 'load_components_footer' );
 require_once(get_template_directory() . '/functions/global-css.php');
 // Anexo para definir los componentes personalizados en las plantillas
 require_once(get_template_directory() . '/functions/templates.php');
+/* anexo para los breakpoints del sitio */
+require_once(get_template_directory() . '/functions/media-queries.php');
 
 function renata_theme_support(){ 
     
@@ -70,6 +72,45 @@ function renata_theme_support(){
 
 } 
 add_action('after_setup_theme', 'renata_theme_support');
+
+// Registra los sidebars
+function widgets_areas(){
+    
+    register_sidebar(
+        array(
+            'name' => __('Blog Sidebar','renata'),
+            'id' => 'posts-sidebar',
+            'before_widget' => '',
+            'after_widget' => '',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name' => __('Article Sidebar','renata'),
+            'id' => 'single-sidebar',
+            'description' => __('Sidebar Widget Area','renata'),
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '',
+            'after_widget' => '',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name' => __('Page Sidebar','renata'),
+            'id' => 'page-sidebar',
+            'description' => __('Sidebar Widget Area','renata'),
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '',
+            'after_widget' => '',
+        )
+    );
+    
+}
+add_action( 'widgets_init', 'widgets_areas' );
 
 // ajax para el blog
 function filter_posts() {
