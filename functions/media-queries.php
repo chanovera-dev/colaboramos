@@ -15,7 +15,7 @@ function renata_theme_media_queries() {
                 /* single post */
                 <?php
                     if ( is_active_sidebar('page-sidebar') ) {
-                        echo '.page-template-default main .container.body-post .section{display:grid;grid-template-columns:1fr 256px;gap:30px 90px;}';
+                        echo '.page-template-default main.body-post .section{display:grid;grid-template-columns:1fr 256px;gap:30px 90px;}';
                     }
                 ?>
             }
