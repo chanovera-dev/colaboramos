@@ -1,6 +1,6 @@
 <main class="container body-post">
     <section class="section heading">
-    <?php the_title('<h1 class="main-title">', '</h1>'); ?>
+    <?php the_title('<h1 class="title">', '</h1>'); ?>
     </section>
     <section class="section">
         <article class="post">

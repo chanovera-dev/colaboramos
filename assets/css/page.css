@@ -1,5 +1,5 @@
 /* post heading */
-.post .main-title{margin-block-start:.67em;max-width:645px;margin-inline:auto;}
+.heading .title{margin-block-start:.67em;max-width:645px;margin-inline:auto;}
 
 /* post content */
 .post .content{padding:40px 0;}
