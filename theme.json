@@ -386,7 +386,7 @@
 						},
 						":hover": {
 							"typography": {
-								"textDecoration": "none"
+								"textDecoration": "underline"
 							}
 						},
 						"typography": {
@@ -567,7 +567,7 @@
 						},
 						":hover": {
 							"typography": {
-								"textDecoration": "underline"
+								"textDecoration": "none"
 							}
 						}
 					}
