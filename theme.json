@@ -193,7 +193,7 @@
 		"spacing": {
 			"blockGap": "1.2rem",
 			"padding": {
-				"top": "var:preset|spacing|.67em",
+				"top": "var:preset|spacing|50",
 				"left": "var:preset|spacing|0",
 				"right": "var:preset|spacing|0"
 			}
