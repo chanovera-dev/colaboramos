@@ -1,0 +1,13 @@
+:root :where(.is-layout-constrained) > *{margin-block-start:16px!important;}
+
+aside{display:grid;gap:40px;align-content:baseline;grid-template-columns:repeat(auto-fill, minmax(225px, 1fr));margin-block-start:.67em;}
+aside a{color:var(--color-link);transition:color .3s ease;}
+aside a:hover{color:var(--color-link-hover);}
+aside .wp-block-group :is(ul,ol,p){visibility:hidden;}
+aside .wp-block-group :is(ul,ol,p) > *{visibility:visible;transition:opacity .3s;}
+aside .wp-block-group :is(ul:hover,ol:hover,p:hover) > :not(:hover){opacity:.25;}
+aside .wp-block-group .wp-block-heading{margin-block-start:0!important;}
+aside :is(.wp-block-categories-list,.wp-block-archives-list) li{transition:border-color .3s ease;}
+aside :is(.wp-block-categories-list,.wp-block-archives-list) li:not(:last-child){border-bottom:var(--line-aside-list);}
+aside :is(.wp-block-categories-list,.wp-block-archives-list) li:hover:not(:last-child){border-color:var(--color-link-hover);}
+aside :is(.wp-block-categories-list,.wp-block-archives-list) li a{padding:10px 0;display:inline-flex;align-items:center;gap:10px;}
