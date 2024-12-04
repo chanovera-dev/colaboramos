@@ -6,19 +6,21 @@ function exclude_current_and_wc_pages_from_page_list($block_content, $block) {
         return $block_content;
     }
 
-    $current_page_url = get_permalink(get_the_ID());
+    // Obtener la URL de la página actual.
+    $current_page_url = trailingslashit(get_permalink(get_the_ID()));
 
-    // Obtener URLs de páginas clave de WooCommerce.
+    // Obtener los slugs de las páginas clave de WooCommerce.
     $wc_page_ids = [
         wc_get_page_id('shop'),       // Página de tienda.
         wc_get_page_id('cart'),       // Página de carrito.
         wc_get_page_id('checkout'),   // Página de finalizar compra.
         wc_get_page_id('myaccount')   // Página de mi cuenta.
     ];
+    $wc_page_slugs = array_filter(array_map(function($page_id) {
+        return $page_id > 0 ? get_post_field('post_name', $page_id) : null;
+    }, $wc_page_ids));
 
-    // Filtrar IDs válidos (evitar -1).
-    $wc_page_urls = array_filter(array_map('get_permalink', $wc_page_ids));
-
+    // Crear un objeto DOMDocument con codificación UTF-8.
     $dom = new DOMDocument('1.0', 'UTF-8');
     libxml_use_internal_errors(true);
     $dom->loadHTML('<?xml encoding="utf-8" ?>' . $block_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -26,9 +28,11 @@ function exclude_current_and_wc_pages_from_page_list($block_content, $block) {
     foreach ($dom->getElementsByTagName('li') as $li) {
         $a = $li->getElementsByTagName('a')->item(0);
         if ($a) {
-            $href = $a->getAttribute('href');
-            // Comparar con la URL actual y las URLs de WooCommerce.
-            if ($href === $current_page_url || in_array($href, $wc_page_urls, true)) {
+            $href = trailingslashit($a->getAttribute('href'));
+            $slug = basename(untrailingslashit($href)); // Extraer el slug de la URL.
+
+            // Excluir si la URL es la actual o si el slug coincide con un slug de WooCommerce.
+            if ($href === $current_page_url || in_array($slug, $wc_page_slugs, true)) {
                 $li->parentNode->removeChild($li);
             }
         }
