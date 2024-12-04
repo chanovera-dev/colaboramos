@@ -1,12 +1,24 @@
 <?php
 
-// exclude the current page for the pages list
+// delete the current page and de WC pages for the pages list
 function exclude_current_page_and_wc_from_page_list($block_content, $block) {
     if (!is_singular('page') || $block['blockName'] !== 'core/page-list') {
         return $block_content;
     }
 
+    // Obtener la URL de la página actual
     $current_page_url = get_permalink(get_the_ID());
+
+    // Obtener las URLs de las páginas de WooCommerce
+    $wc_pages = [];
+    if (class_exists('WooCommerce')) {
+        $wc_pages = [
+            wc_get_page_permalink('shop'),
+            wc_get_page_permalink('cart'),
+            wc_get_page_permalink('checkout'),
+            wc_get_page_permalink('myaccount'),
+        ];
+    }
 
     $dom = new DOMDocument('1.0', 'UTF-8');
     libxml_use_internal_errors(true);
@@ -14,7 +26,14 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
 
     foreach ($dom->getElementsByTagName('li') as $li) {
         $a = $li->getElementsByTagName('a')->item(0);
+
+        // Eliminar si el enlace corresponde a la página actual
         if ($a && $a->getAttribute('href') === $current_page_url) {
+            $li->parentNode->removeChild($li);
+        }
+
+        // Eliminar si el enlace corresponde a una página de WooCommerce
+        elseif ($a && in_array($a->getAttribute('href'), $wc_pages)) {
             $li->parentNode->removeChild($li);
         }
     }
