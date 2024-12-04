@@ -1,8 +1,7 @@
 <?php
 
 // delete the current page and de WC pages for the pages list
-/*
-function exclude_current_page_and_wc_from_page_list($block_content, $block) {
+function exclude_current_page_from_page_list($block_content, $block) {
     if (!is_singular('page') || $block['blockName'] !== 'core/page-list') {
         return $block_content;
     }
@@ -26,5 +25,4 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
 
     return $dom->saveHTML();
 }
-add_filter('render_block', 'exclude_current_page_and_wc_from_page_list', 10, 2);
-*/
+add_filter('render_block', 'exclude_current_page_from_page_list', 10, 2);
