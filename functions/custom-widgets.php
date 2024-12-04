@@ -27,3 +27,4 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
     return $dom->saveHTML();
 }
 add_filter('render_block', 'exclude_current_page_and_wc_from_page_list', 10, 2);
+*/
