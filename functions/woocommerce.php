@@ -12,9 +12,8 @@ add_theme_support( 'wc-product-gallery-slider' );
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 // excluir las páginas de WooCoomerce de las listas de WordPress
-function filter_core_page_list_block($query_args, $block) {
-    if ($block->name === 'core/page-list') {
-        // Obtén los IDs de las páginas de WooCommerce
+function exclude_woocommerce_pages_from_page_list_block($block_content, $block) {
+    if ($block['blockName'] === 'core/page-list') {
         $woocommerce_pages = array(
             get_option('woocommerce_shop_page_id'),
             get_option('woocommerce_cart_page_id'),
@@ -22,10 +21,23 @@ function filter_core_page_list_block($query_args, $block) {
             get_option('woocommerce_myaccount_page_id')
         );
 
-        // Excluye las páginas de WooCommerce
-        $query_args['post__not_in'] = $woocommerce_pages;
+        // Filtrar el contenido del bloque para excluir las páginas de WooCommerce
+        $dom = new DOMDocument();
+        @$dom->loadHTML(mb_convert_encoding($block_content, 'HTML-ENTITIES', 'UTF-8'));
+        $links = $dom->getElementsByTagName('a');
+
+        foreach ($links as $link) {
+            $href = $link->getAttribute('href');
+            foreach ($woocommerce_pages as $page_id) {
+                if (strpos($href, 'page_id=' . $page_id) !== false) {
+                    $link->parentNode->removeChild($link);
+                }
+            }
+        }
+
+        $block_content = $dom->saveHTML();
     }
-    return $query_args;
+    return $block_content;
 }
-add_filter('render_block_data', 'filter_core_page_list_block', 10, 2);
+add_filter('render_block', 'exclude_woocommerce_pages_from_page_list_block', 10, 2);
 
