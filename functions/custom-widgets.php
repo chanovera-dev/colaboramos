@@ -8,10 +8,6 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
 
     // Obtener la URL de la página actual
     $current_page_url = get_permalink(get_the_ID());
-    $shop_page_url = wc_get_page_permalink('shop');
-    $cart_page_url = wc_get_page_permalink('cart');
-    $checkout_page_url = wc_get_page_permalink('checkout');
-    $account_page_url = wc_get_page_permalink('myaccount');
 
     $dom = new DOMDocument('1.0', 'UTF-8');
     libxml_use_internal_errors(true);
@@ -22,23 +18,6 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
 
         // Eliminar si el enlace corresponde a la página actual
         if ($a && $a->getAttribute('href') === $current_page_url) {
-            $li->parentNode->removeChild($li);
-        }
-
-        // Eliminar si el enlace corresponde a una página de WooCommerce
-        elseif ($a && $a->getAttribute('href') === $shop_page_url) {
-            $li->parentNode->removeChild($li);
-        }
-
-        elseif ($a && $a->getAttribute('href') === $cart_page_url) {
-            $li->parentNode->removeChild($li);
-        }
-
-        elseif ($a && $a->getAttribute('href') === $checkout_page_url) {
-            $li->parentNode->removeChild($li);
-        }
-
-        elseif ($a && $a->getAttribute('href') === $account_page_url) {
             $li->parentNode->removeChild($li);
         }
 
