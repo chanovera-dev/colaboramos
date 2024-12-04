@@ -10,6 +10,8 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
     $current_page_url = get_permalink(get_the_ID());
     $shop_page_url = wc_get_page_permalink('shop');
     $cart_page_url = wc_get_page_permalink('cart');
+    $checkout_page_url = wc_get_page_permalink('checkout');
+    $myaccount_page_url = wc_get_page_permalink('myaccount');
 
     // Obtener las URLs de las páginas de WooCommerce
     // $wc_pages = [];
@@ -40,6 +42,14 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
         }
 
         elseif ($a && $a->getAttribute('href') === $cart_page_url) {
+            $li->parentNode->removeChild($li);
+        }
+
+        elseif ($a && $a->getAttribute('href') === $checkout_page_url) {
+            $li->parentNode->removeChild($li);
+        }
+
+        elseif ($a && $a->getAttribute('href') === $myaccount_page_url) {
             $li->parentNode->removeChild($li);
         }
     }
