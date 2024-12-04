@@ -23,6 +23,9 @@ require_once(get_template_directory() . '/functions/templates.php');
 require_once(get_template_directory() . '/functions/media-queries.php');
 // anexo para los ajustes a los widgets
 require_once(get_template_directory() . '/functions/custom-widgets.php');
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    require_once(get_template_directory() . '/functions/woocommerce.php');
+} else {}
 
 function renata_theme_support(){ 
     
