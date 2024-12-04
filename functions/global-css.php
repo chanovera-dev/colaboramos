@@ -9,9 +9,7 @@ function renata_theme_custom_global_css() {
             body{
                 font-size:16px;font-weight:400;line-height:1.7;text-align:left;
                 background:
-                    linear-gradient(red, transparent),
-                    linear-gradient(to top left, lime, transparent),
-                    linear-gradient(to top right, blue, transparent);
+                linear-gradient(lightcoral, transparent), linear-gradient(to top left, palegreen, transparent), linear-gradient(to top right, lightblue, transparent);
                 background-blend-mode: screen;
             }
             :is(header,footer,aside) :is(ol,ul){padding-left:0;list-style:none;}
