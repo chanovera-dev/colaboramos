@@ -21,6 +21,8 @@ require_once(get_template_directory() . '/functions/global-css.php');
 require_once(get_template_directory() . '/functions/templates.php');
 /* anexo para los breakpoints del sitio */
 require_once(get_template_directory() . '/functions/media-queries.php');
+// anexo para los ajustes a los widgets
+require_once(get_template_directory() . '/functions/custom-widgets.php');
 
 function renata_theme_support(){ 
     
