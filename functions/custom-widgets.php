@@ -14,4 +14,4 @@ function exclude_current_page_from_widget($args) {
     }
     return $args;
 }
-add_filter('widget_pages_args', 'exclude_current_page_from_widget', 10);
+add_filter('widget_pages_args', 'exclude_current_page_from_widget', 99);
