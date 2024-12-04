@@ -6,7 +6,14 @@ function renata_theme_custom_global_css() {
             /* G E N E R A L E S */
             *,:before,:after{box-sizing:border-box;margin:0;}
             html{scroll-behavior:smooth;font-family:sans-serif;}
-            body{font-size:16px;font-weight:400;line-height:1.7;text-align:left;background-color:var(--bg-body);}
+            body{
+                font-size:16px;font-weight:400;line-height:1.7;text-align:left;
+                background:
+                    linear-gradient(red, transparent),
+                    linear-gradient(to top left, lime, transparent),
+                    linear-gradient(to top right, blue, transparent);
+                background-blend-mode: screen;
+            }
             :is(header,footer,aside) :is(ol,ul){padding-left:0;list-style:none;}
             .container .section{width:min(100% - 30px, 1096px);margin-inline:auto;}
             img{display:block;height:auto;}
