@@ -19,7 +19,7 @@ function exclude_current_page_and_wc_from_page_list($block_content, $block) {
 
     foreach ($dom->getElementsByTagName('li') as $li) {
         $a = $li->getElementsByTagName('a')->item(0);
-        $b = $li->getElementsByTagName('a')->item(0);
+        $b = $li->getElementsByTagName('a')->item(1);
 
         // Eliminar si el enlace corresponde a la página actual
         if ($a && $a->getAttribute('href') === $current_page_url) {
