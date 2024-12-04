@@ -1,6 +1,7 @@
 <?php
 
 // delete the current page and de WC pages for the pages list
+/*
 function exclude_current_page_and_wc_from_page_list($block_content, $block) {
     if (!is_singular('page') || $block['blockName'] !== 'core/page-list') {
         return $block_content;
