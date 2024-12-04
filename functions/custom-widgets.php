@@ -1,17 +1,26 @@
 <?php
 
-function exclude_current_page_from_widget($args) {
-    // Verifica que estamos en una página y obtiene el ID de la página actual.
-    if (is_page()) {
-        $current_page_id = get_queried_object_id();
+function exclude_current_page_from_page_list($block_content, $block) {
+    if (!is_singular('page') || $block['blockName'] !== 'core/page-list') {
+        return $block_content;
+    }
 
-        // Agrega el ID de la página actual al argumento 'exclude'.
-        if (!empty($args['exclude'])) {
-            $args['exclude'] .= ',' . $current_page_id;
-        } else {
-            $args['exclude'] = $current_page_id;
+    // Obtener el ID de la página actual.
+    $current_page_id = get_the_ID();
+
+    // Modificar el contenido del bloque para excluir la página actual.
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true); // Evitar warnings con HTML mal formado.
+    $dom->loadHTML($block_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+    foreach ($dom->getElementsByTagName('li') as $li) {
+        $a = $li->getElementsByTagName('a')->item(0);
+        if ($a && strpos($a->getAttribute('href'), 'page_id=' . $current_page_id) !== false) {
+            $li->parentNode->removeChild($li);
         }
     }
-    return $args;
+
+    return $dom->saveHTML();
 }
-add_filter('widget_pages_args', 'exclude_current_page_from_widget', 99);
+add_filter('render_block', 'exclude_current_page_from_page_list', 10, 2);
+
