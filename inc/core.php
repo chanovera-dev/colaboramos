@@ -126,6 +126,7 @@ add_action( 'wp_enqueue_scripts', 'load_parts_header' );
  * - Admin styles for logged-in users (assets/css/wp-logged-in.css)
  */
 function footer_components() {
+    $directory = get_template_directory();
     $uri = get_template_directory_uri();
         $assets_path = '/assets';
 
@@ -136,13 +137,13 @@ function footer_components() {
         wp_enqueue_script($handle, $uri . $path, [], get_asset_version( $path ), true);
     };
 
-    $enqueue_style( 'wp-root', "$assets_path/css/wp-root.css" );
-    $enqueue_style( 'custom-forms', "$assets_path/css/forms.css" );
-    $enqueue_script( 'global-scripts', "$assets_path/js/global.js" );
-    $enqueue_script( 'animate-in', "$assets_path/js/animate-in.js" );
+    file_exists( $directory . "$assets_path/css/wp-root.css" ) ? $enqueue_style( 'wp-root', "$assets_path/css/wp-root.css" ) : null;
+    file_exists( $directory . "$assets_path/css/forms.css" ) ? $enqueue_style( 'custom-forms', "$assets_path/css/forms.css" ) : null;
+    file_exists( $directory . "$assets_path/js/global.js" ) ? $enqueue_script( 'global-scripts', "$assets_path/js/global.js" ) : null;
+    file_exists( $directory . "$assets_path/js/animate-in.js" ) ? $enqueue_script( 'animate-in', "$assets_path/js/animate-in.js" ) : null;
      
     if ( is_user_logged_in() ) {
-        $enqueue_style( 'wp-logged-in', "$assets_path/css/wp-logged-in.css" );
+        file_exists( $directory . "$assets_path/css/wp-logged-in.css" ) ? $enqueue_style( 'wp-logged-in', "$assets_path/css/wp-logged-in.css" ) : null;
     }
 }
 add_action( 'wp_footer', 'footer_components' );
