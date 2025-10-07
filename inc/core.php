@@ -146,4 +146,4 @@ function footer_components() {
         file_exists( $directory . "$assets_path/css/wp-logged-in.css" ) ? $enqueue_style( 'wp-logged-in', "$assets_path/css/wp-logged-in.css" ) : null;
     }
 }
-add_action( 'wp_footer', 'footer_components' );
+add_action( 'wp_enqueue_scripts', 'footer_components' );
