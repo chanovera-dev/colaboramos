@@ -23,7 +23,8 @@
     <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'colaboramos' ); ?></a>
 
     <header id="main-header" role="banner" aria-label="<?php echo esc_attr__( 'Main header', 'colaboramos' ); ?>">
-        <div class="block">
+    <div class="backdrop"></div>    
+    <div class="block">
             <div class="content">
                 <div class="site-brand">
                     <?php
@@ -42,12 +43,25 @@
                     ?>
                 </div>
                 <?php
-                    wp_nav_menu( array(
+                    $menu_html = wp_nav_menu( array(
+                        'theme_location'  => 'primary',
                         'container'       => 'nav',
                         'container_class' => 'main-navigation',
-                        'theme_location'  => 'primary',
+                        'echo'            => false,
                         'fallback_cb'     => false,
                     ) );
+
+                    if ( $menu_html ) {
+                        // insertar el backdrop justo después de la apertura del <nav ...>
+                        $backdrop = '<div class="backdrop" aria-hidden="true"></div>';
+                        $menu_html = preg_replace(
+                            '/(<nav\b[^>]*class=["\\\'][^"\\\']*main-navigation[^"\\\']*["\\\'][^>]*>)/i',
+                            '$1' . $backdrop,
+                            $menu_html,
+                            1
+                        );
+                        echo $menu_html;
+                    }
                 ?>
                 <div class="members-options">
                     <a href="#" class="signup">Registro</a>
