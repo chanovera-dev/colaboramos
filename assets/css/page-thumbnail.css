@@ -5,8 +5,13 @@ header.block {
             height: 120%;
             object-fit: cover;
             position: absolute;
-            top: 0;
+            top: -10%;
             left: 0;
+        }
+
+        & .page-title {
+            background-color: light-dark(var(--background-header-light),var(--background-header-dark));
+            backdrop-filter: blur(7px);
         }
     }
 }

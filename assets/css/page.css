@@ -9,61 +9,54 @@ header.block {
         overflow: hidden;
         border-radius: 1rem;
         corner-shape: squircle;
+        background: 
+            radial-gradient(circle at 50% 15%, #f2f2f2 0%, transparent 60%),
+            radial-gradient(circle at 80% 35%, #e6e6e6 0%, transparent 50%),
+            radial-gradient(circle at 20% 55%, #ededed 0%, transparent 50%),
+            radial-gradient(circle at 70% 75%, #d9d9d9 0%, transparent 55%),
+            radial-gradient(circle at 40% 90%, #cccccc 0%, transparent 60%),
+            #f5f5f5;
 
-        & .frame {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
+        & .blobpit {
+        overflow: hidden;
+        position: absolute;
+        inset: 0;
+        z-index:0;
+        }
+        & .blobpit::before, 
+        & .blobpit::after {
+        filter: blur(40px);
+            content: "";
+            width: 30vmax;
+            height: 30vmax;
             position: absolute;
+            background: rgba(204, 204, 204, 0.7);
+            left: -20vmin;
+            top: -20vmin;
+            animation: morph 2s linear infinite alternate, spin 2s linear infinite;
+            z-index: 1;
+            will-change: border-radius, transform;
+            transform-origin: 55% 55%;
+            pointer-events: none; 
         }
-
-        .frame-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .frame-bg .bg-color,
-        .frame-bg .bg-black {
-            width: 200%;
-            position: absolute;
-            border-radius: 100em;
-            -webkit-animation: rotate 35s linear infinite;
-                    animation: rotate 35s linear infinite;
-        }
-        .frame-bg .bg-color {
-            right: 0;
-            top: 0;
-            filter: blur(40px);
-            z-index: 10;
-            mix-blend-mode: luminosity;
-        }
-        .frame-bg .bg-black {
-            left: 0;
+        & .blobpit::after {
+            width: 70vmin;
+            height: 70vmin;
+            left: auto;
+            right: -10vmin;
+            top: auto;
             bottom: 0;
-            filter: blur(40px);
-            z-inxed: 1;
-            animation-direction: reverse;
-            -webkit-animation-delay: 10s;
-                    animation-delay: 10s;
+            animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
+            transform-origin: 20% 20%;
+        
         }
+
         & .page-title {
             position: relative;
             padding: 1rem 2rem;
             border-radius: 1rem;
             corner-shape: squircle;
             max-width: 40.313rem;
-            background-color: light-dark(var(--background-header-light),var(--background-header-dark));
-            backdrop-filter: blur(7px);
         }
     }
 }
@@ -74,11 +67,14 @@ header.block {
     }
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+@keyframes morph {
+  0% {
+    border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%; }
+  100% {
+    border-radius: 40% 60%; } 
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn); } 
 }
