@@ -98,3 +98,29 @@ function toggleMenuMobile() {
         document.addEventListener( 'click', handleClickOutside );
     }
 }
+
+function menuWithChildren() {
+    const menuItems = document.querySelectorAll('.menu-item-has-children');
+  
+    menuItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+
+            if (e.target.tagName === 'A') {
+                return;
+            }
+
+            e.preventDefault();
+
+            item.classList.toggle('open');
+
+            const subMenu = item.querySelector('.sub-menu');
+            if (subMenu) {
+                const childrenCount = subMenu.children.length;
+                const transitionTime = childrenCount * 0.1; // Calculate transition time based on number of children
+                subMenu.style.transition = `max-height ${transitionTime}s cubic-bezier(0.73, 0.32, 0.34, 1.5)`;
+                subMenu.classList.toggle('open');
+            }
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', menuWithChildren);
