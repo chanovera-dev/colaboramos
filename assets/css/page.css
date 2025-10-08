@@ -1,0 +1,21 @@
+header.block {
+    margin: 2.5rem 0;
+
+    & .content {
+        position: relative;
+        aspect-ratio: 21 / 9;
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+        border-radius: 1rem;
+        corner-shape: squircle;
+
+        & .page-title {
+            position: relative;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            corner-shape: squircle;
+            max-width: 40.313rem;
+        }
+    }
+}
