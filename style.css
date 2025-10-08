@@ -28,8 +28,10 @@ html {
 
 body {
     min-height: 100dvh;
+    height: 3000px; /* temp */
     display: grid;
     grid-template-rows: auto 1fr auto;
+    color: light-dark(var(--text--light), var(--text--dark));
 }
 
 & .skip-link.screen-reader-text {
@@ -44,5 +46,512 @@ body {
 
     &:focus {
         top: 0;
+    }
+}
+
+.block:has(> .content) {
+    & .content {
+        width: min(100% - 2.5rem, 75rem);
+        margin-inline: auto;
+    }
+}
+
+.is-safari {
+    .members-options {
+        a {
+            border-radius: .5rem;
+        }
+    }
+
+    .menu-mobile__button {
+        border-radius: .5rem;
+    }
+}
+
+:is(.scroll-down,.scroll-up) {
+    & #main-header {
+        & .backdrop {
+            background-color: light-dark(var(--background-header-light), var(--background-header-dark));
+            backdrop-filter: blur(10px);
+            box-shadow: var(--wp--preset--color--shadow-nav);
+        }
+    }
+}
+
+#main-header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+
+    & > .backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: transparent;
+        transition: background-color .3s ease-in-out, backdrop-filter .3s ease-in-out, box-shadow .3s ease-in-out;
+    }
+
+    & .block {
+        position: relative;
+
+        & .content {
+            display: grid;
+            align-items: center;
+            padding: var(--padding-nav);
+            gap: 1.25rem;
+
+            & .main-navigation {
+                & .menu {
+                    padding-left: 0;
+                    list-style: none;
+
+                    & li {
+                        position: relative;
+                        & a {
+                            display: flex;
+                            padding: var(--padding-button);
+                        }
+                    }
+                }
+            }
+
+            & .members-options {
+                margin-left: auto;
+            }
+
+            & .menu-mobile__button {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                display: grid;
+                width: 2.926rem;
+                height: 2.926rem;
+                place-content: center;
+                border-radius: 1rem;
+                corner-shape: squircle;
+                border: 1px solid var(--wp--preset--color--accent-6);
+                background-color: transparent;
+
+                &:hover {
+                    cursor:pointer;
+                }
+
+                &.active {
+                    & .bar {
+                        transform: rotate(45deg);
+                    }
+
+                    & .bar:before {
+                        top: 0;
+                        transform: rotate(90deg);
+                    }
+
+                    & .bar:after {
+                        bottom: 0;
+                        opacity: 0;
+                    }
+                }
+
+                & .bar {
+                    position: relative;
+                    width: 30px;
+                    height: 2px;
+                    background-color: light-dark(var(--text--light), var(--text--dark));;
+                    transition: transform .3s ease-in-out;
+                }
+
+                & .bar:before,
+                & .bar:after {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    width: 30px;
+                    height: 2px;
+                    background-color: light-dark(var(--text--light), var(--text--dark));
+                }
+
+                & .bar:before {
+                    top: -10px;
+                    transition: transform .3s ease-in-out, top .3s ease-in-out;
+                }
+
+                & .bar:after {
+                    bottom: -10px;
+                    transition: opacity .3s ease-in-out, bottom .3s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+@media (width < 500px) {
+    #main-header {
+        & .block {
+            & .content {
+                & .members-options {
+                    display: grid;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+@media (width >= 500px) {
+    #main-header {
+        & .block {
+            & .content {
+                & .members-options {
+                    & a {
+                        padding: var(--padding-button);
+                        border-radius: 1rem;
+                        corner-shape: squircle;
+                    }
+
+                    .login {
+                        border: .063rem solid var(--wp--preset--color--accent-6);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width < 75rem) {
+    #main-header {
+        & .block {
+            & .content {
+                position: relative;
+                width: 100%;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+                grid-template-columns: 1fr auto auto;
+                z-index: 0;
+
+                & .main-navigation {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding-top: 4.802rem;
+                    height: 100dvh;
+                    z-index: 1;
+                    transform: translateX(-120%);
+                    transition: transform .6s ease-in-out;
+
+                    &.show {
+                        transform: translateX(0);
+                    }
+
+                    & .backdrop {
+                        position: absolute;
+                        inset: 0;
+                        background-color: light-dark(var(--background-header-light), var(--background-header-dark));
+                        backdrop-filter: blur(7px);
+                        box-shadow: var(--wp--preset--color--shadow-nav);
+                        z-index: -1;
+                    }
+                    
+                    & .menu {
+                        & li {
+                            & a {
+                                position: relative;
+                                z-index: 1;
+
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 0;
+                                    height: 100%;
+                                    background-color: light-dark(var(--green-lighter), var(--green-darker));
+                                    transition: width .6s ease-in-out;
+                                    z-index: -1;
+                                }
+
+                                &:hover {
+                                    &:before {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+
+                            &.current_page_item {
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    inset: 0;
+                                    background-color: light-dark(#f6f6f6ba, #111);
+                                    z-index: 0;
+                                }
+
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 50%; transform: translateY(-50%);
+                                    right: 0; 
+                                    width: .188rem;
+                                    height: 1.25rem; 
+                                    background-color: var(--wp--preset--color--green);
+                                }
+                            }
+
+                            &.menu-item-has-children {
+
+                                &:has(.sub-menu.open) {
+                                    & .wrapper-for-title {
+                                        & .button-for-submenu {
+                                            transform: rotate(180deg);
+                                        }
+                                    }
+                                }
+
+                                & .wrapper-for-title {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    padding: var(--padding-button);
+                                    position: relative;
+                                    z-index: 1;
+
+                                    &:before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 0;
+                                        height: 100%;
+                                        background-color: light-dark(var(--green-lighter), var(--green-darker));
+                                        transition: width .6s ease-in-out;
+                                        z-index: -1;
+                                    }
+
+                                    &:hover {
+                                        &:before {
+                                            width: 100%;
+                                        }
+                                    }
+
+                                    & a {
+                                        padding: 0;
+
+                                        &:before {
+                                            content: none;
+                                        }
+                                    }
+
+                                    & .button-for-submenu {
+                                        background-color: transparent;
+                                        border: none;
+                                        display: grid;
+                                        place-content: center;
+                                        width: .813rem;
+                                        height: .813rem;
+                                        transition: transform .3s ease-in-out;
+                                        transform: rotate(0);
+
+                                        & svg {
+                                            fill: currentColor;
+                                        }
+                                    }
+                                }
+
+                                & .sub-menu {
+                                    padding-left: 0;
+                                    list-style: none;
+                                    background-color: light-dark(#f6f6f6ba, #111);
+
+                                    &.open {
+                                        & li {
+                                            max-height: 2.804rem;
+
+                                            & a {
+                                                color: light-dark(var(--text-light), var(--text-dark));
+                                            }
+                                        }
+                                    }
+
+                                    & > li {
+                                        overflow:hidden;
+                                        height: 3rem;
+                                        max-height: 0;
+                                        transition: .6s max-height cubic-bezier(0.73, 0.32, 0.34, 1.5);
+                                        
+                                        & a {
+                                            padding-left: 2.5rem;
+                                            position: relative;
+                                            font-size: calc(var(--wp--preset--font-size--medium) - .1rem);
+                                            color: transparent;
+                                            transition: color .3s .6s ease-in-out;
+                                            z-index: 1;
+                                        
+                                            &:before {
+                                                content: '';
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                width: 0;
+                                                height: 100%;
+                                                background-color: light-dark(var(--green-lighter), var(--green-darker));
+                                                transition: width .6s ease-in-out;
+                                                z-index: -1;
+                                            }
+
+                                            &:hover {
+                                                &:before {
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width >= 75rem) {
+    #main-header {
+        & .block {
+            & .content {
+                grid-template-columns: 1fr auto 1fr;
+
+                & .main-navigation {
+                    & .menu {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        & > li {
+                            & > a, 
+                            & > .wrapper-for-title {
+                                display: flex;
+                                align-items: center;
+                                gap: 13px;
+                                padding: var(--padding-nav-link);
+                                overflow: hidden;
+                            }
+
+                            &.menu-item-has-children {
+                                & .wrapper-for-title {
+                                    padding-right: 5px;
+
+                                    & a {
+                                        padding: 0;
+                                    }
+
+                                    & .button-for-submenu {
+                                        background-color: transparent;
+                                        border: none;
+                                        display: grid;
+                                        place-content: center;
+                                        width: .813rem;
+                                        height: .813rem;
+                                        transition: transform .3s ease-in-out;
+                                        transform: rotate(180deg);
+
+                                        & svg {
+                                            fill: currentColor;
+                                        }
+                                    }
+                                }
+
+                                .sub-menu {
+                                    position: absolute;
+                                    top: 4.1rem;
+                                    left: 0;
+                                    padding: .5rem 0;
+                                    list-style: none;
+                                    min-width: max-content;
+                                    background-color: light-dark(var(--background-header-light),var(--background-header-dark));
+                                    backdrop-filter: blur(7px);
+                                    border-radius: .5rem;
+                                    box-shadow: var(--wp--preset--color--shadow-nav);
+                                    transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out, padding .3s ease-in-out;
+
+                                    & > li {
+                                        overflow:hidden;
+                                        height: 2.5rem;
+                                        max-height: 2.061rem;
+                                        transition: .6s max-height cubic-bezier(0.73, 0.32, 0.34, 1.5);
+                                        
+                                        & a {
+                                            position: relative;
+                                            font-size: calc(var(--wp--preset--font-size--medium) - .1rem);
+                                            color: light-dark(var(--text-light), var(--text-dark));
+                                            transition: color .3s .1s ease-in-out;
+                                            z-index: 1;
+                                            
+                                            &:before {
+                                                content: '';
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                width: 0;
+                                                height: 100%;
+                                                background-color: light-dark(var(--green-lighter), var(--green-darker));
+                                                transition: width .6s ease-in-out;
+                                                z-index: -1;
+                                            }
+
+                                            &:hover {
+                                                &:before {
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.menu-item-has-children:not(:hover) {
+                                & .wrapper-for-title {
+                                    & .button-for-submenu {
+                                        transform: rotate(0deg);
+                                    }
+                                }
+
+                                & .sub-menu {
+                                    background-color: transparent;
+                                    box-shadow: none;
+                                    padding: 0;
+                                    
+                                    & > li {
+                                        max-height: 0;
+                                        transition: max-height .3s;
+
+                                        & a {
+                                            color: transparent;
+                                            /* transition: color .1s; */
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        & > li.current_page_item {
+                            &:after {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 50%; transform: translateX(-50%);
+                                width: 1.25rem;
+                                height: .188rem;
+                                background-color: var(--wp--preset--color--green);
+                            }
+                        }
+                    }
+                }
+
+                & .menu-mobile__button {
+                    display: none;
+                }
+            }
+        }
     }
 }
