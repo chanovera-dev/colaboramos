@@ -1,0 +1,35 @@
+:root {
+    color-scheme: light dark;
+    /* sizes */
+    --heigh-wp-adminbar: 2.875rem;
+
+    /* paddings */
+    --padding-button: .7129rem 1.25rem;
+    --padding-nav: .938rem 0;
+    --padding-nav-link: 1.251rem 1rem;
+
+    /* colors */
+    --background-header-light: #ffffffce;
+    --background-header-dark: #000000ce;
+    --text--light: #000000;
+    --text--dark: #ffffff;
+    --green-lighter: oklch(from var(--wp--preset--color--green) clamp(0, l + 0.22, 1) calc(c * 1.1) calc(h * .82));
+    --green-darker: oklch(from var(--wp--preset--color--green) clamp(0, l - 0.3, 1) calc(c * 1.1) calc(h * .82));
+}
+
+
+
+@media (width >= 783px) {
+    :root {
+            /* sizes */
+        --heigh-wp-adminbar: 2rem;
+    }
+}
+
+@media (width >= 75rem) {
+    :root {
+        /* paddings */
+        --padding-button: .313rem 1rem;
+        --padding-nav: 0;
+    }
+}
