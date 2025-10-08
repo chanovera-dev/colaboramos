@@ -11,6 +11,8 @@
     /* colors */
     --background-header-light: #ffffffce;
     --background-header-dark: #000000ce;
+    --background-base-light: #ffffff;
+    --background-base-dark: #000000;
     --text--light: #000000;
     --text--dark: #ffffff;
     --green-lighter: oklch(from var(--wp--preset--color--green) clamp(0, l + 0.22, 1) calc(c * 1.1) calc(h * .82));
