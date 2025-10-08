@@ -8,10 +8,5 @@ header.block {
             top: 0;
             left: 0;
         }
-
-        & .page-title {
-            background-color: light-dark(var(--background-header-light),var(--background-header-dark));
-            backdrop-filter: blur(7px);
-        }
     }
 }

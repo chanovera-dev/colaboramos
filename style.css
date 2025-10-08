@@ -28,7 +28,6 @@ html {
 
 body {
     min-height: 100dvh;
-    height: 3000px; /* temp */
     display: grid;
     grid-template-rows: auto 1fr auto;
     color: light-dark(var(--text--light), var(--text--dark));
@@ -68,6 +67,12 @@ body {
     }
 }
 
+.scroll-down {
+    & #main-header {
+        transform: translateY(-120%);
+    }
+}
+
 :is(.scroll-down,.scroll-up) {
     & #main-header {
         & .backdrop {
@@ -82,6 +87,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 99;
+    transition: transform .6s ease-in-out;
 
     & > .backdrop {
         position: absolute;
