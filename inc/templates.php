@@ -45,6 +45,8 @@ function page_template() {
 
     if ( is_page() or is_single() ) {
         $page_css = "$assets_path/css/page.css";
+        $single_css = "$assets_path/css/single.css";
+        $comments_css = "$assets_path/css/comments.css";
         $page_thumbnail = "$assets_path/css/page-thumbnail.css";
         $parallax_hero = "$assets_path/js/parallax-hero.js";
         $blur_typing = "$assets_path/js/blur-typing.js";
@@ -56,6 +58,14 @@ function page_template() {
         if ( $post_id && has_post_thumbnail( $post_id ) ) {
             colaboramos_enqueue_style( 'page-thumbnail', $page_thumbnail );
             colaboramos_enqueue_script( 'parallax-hero', $parallax_hero );
+        }
+
+        if ( is_single() ) {
+            colaboramos_enqueue_style( 'single', $single_css );
+
+             if ( comments_open() ) {
+                colaboramos_enqueue_style( 'custom-comments', $comments_css );
+             }
         }
     }
 }
