@@ -35,11 +35,13 @@ body {
 
 & .skip-link.screen-reader-text {
     position: absolute;
-    top: -40px;
+    top: -2.5rem;
     left: 0;
     background: #000;
     color: #fff;
-    padding: 8px 16px;
+    padding: var(--padding-button);
+    border-radius: 1rem;
+    corner-shape: squircle;
     z-index: 100;
     transition: top .15s ease;
 
@@ -77,7 +79,7 @@ body {
     & #main-header {
         & .backdrop {
             background-color: light-dark(var(--background-header-light), var(--background-header-dark));
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(0.438rem);
             box-shadow: var(--wp--preset--color--shadow-nav);
         }
     }
@@ -136,7 +138,7 @@ body {
                 place-content: center;
                 border-radius: 1rem;
                 corner-shape: squircle;
-                border: 1px solid var(--wp--preset--color--accent-6);
+                border: 0.063rem solid var(--wp--preset--color--accent-6);
                 background-color: transparent;
 
                 &:hover {
@@ -161,8 +163,8 @@ body {
 
                 & .bar {
                     position: relative;
-                    width: 30px;
-                    height: 2px;
+                    width: 1.875rem;
+                    height: 0.125rem;
                     background-color: light-dark(var(--text--light), var(--text--dark));;
                     transition: transform .3s ease-in-out;
                 }
@@ -172,18 +174,18 @@ body {
                     position: absolute;
                     content: '';
                     left: 0;
-                    width: 30px;
-                    height: 2px;
+                    width: 1.875rem;
+                    height: 0.125rem;
                     background-color: light-dark(var(--text--light), var(--text--dark));
                 }
 
                 & .bar:before {
-                    top: -10px;
+                    top: -0.625rem;
                     transition: transform .3s ease-in-out, top .3s ease-in-out;
                 }
 
                 & .bar:after {
-                    bottom: -10px;
+                    bottom: -0.625rem;
                     transition: opacity .3s ease-in-out, bottom .3s ease-in-out;
                 }
             }
@@ -191,7 +193,7 @@ body {
     }
 }
 
-@media (width < 500px) {
+@media (width < 31.25rem) {
     #main-header {
         & .block {
             & .content {
@@ -204,7 +206,7 @@ body {
     }
 }
 
-@media (width >= 500px) {
+@media (width >= 31.25rem) {
     #main-header {
         & .block {
             & .content {
@@ -241,6 +243,7 @@ body {
                     left: 0;
                     padding-top: 4.802rem;
                     height: 100dvh;
+                    min-width: 18.75rem;
                     z-index: 1;
                     transform: translateX(-120%);
                     transition: transform .6s ease-in-out;
@@ -253,7 +256,7 @@ body {
                         position: absolute;
                         inset: 0;
                         background-color: light-dark(var(--background-header-light), var(--background-header-dark));
-                        backdrop-filter: blur(7px);
+                        backdrop-filter: blur(.438rem);
                         box-shadow: var(--wp--preset--color--shadow-nav);
                         z-index: -1;
                     }
@@ -438,14 +441,14 @@ body {
                             & > .wrapper-for-title {
                                 display: flex;
                                 align-items: center;
-                                gap: 13px;
+                                gap: 0.813rem;
                                 padding: var(--padding-nav-link);
                                 overflow: hidden;
                             }
 
                             &.menu-item-has-children {
                                 & .wrapper-for-title {
-                                    padding-right: 5px;
+                                    padding-right: 0.313rem;
 
                                     & a {
                                         padding: 0;
@@ -475,7 +478,7 @@ body {
                                     list-style: none;
                                     min-width: max-content;
                                     background-color: light-dark(var(--background-header-light),var(--background-header-dark));
-                                    backdrop-filter: blur(7px);
+                                    backdrop-filter: blur(0.438rem);
                                     border-radius: .5rem;
                                     box-shadow: var(--wp--preset--color--shadow-nav);
                                     transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out, padding .3s ease-in-out;
