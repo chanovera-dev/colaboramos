@@ -1,8 +1,26 @@
+header.block {
+    & .content {
+        .metadata {
+            display: inline-flex; flex-wrap: wrap;
+
+            & > div:not(:last-child) {
+                position: relative;
+
+                &:after {
+                    content: '●';
+                    margin: 0 .5rem;
+                    opacity: .4;
+                }
+            }
+        }
+    }
+}
+
 .block {
     & .content-tags {
+        width: min(100% - 2.5rem, 40.313rem) !important;
         display: flex;
         align-items: center;
-        justify-content: center;
         flex-wrap: wrap;
         gap: .438rem;
         padding-bottom: 2.5rem;
@@ -33,6 +51,7 @@
     }
 
     & .content-author {
+        width: min(100% - 2.5rem, 40.313rem) !important;
         padding: 1.25rem;
         margin-bottom: 2.5rem;
         border: 0.063rem solid var(--wp--preset--color--accent-6);
@@ -59,6 +78,7 @@
     }
 
     & .content-comments {
+        width: min(100% - 2.5rem, 768px) !important;
         padding-bottom: 2.5rem;
     }
 }

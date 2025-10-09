@@ -9,11 +9,21 @@
                     }
 
                     the_title( '<h1 class="page-title">', '</h1>' );
+                    echo '<div class="metadata"><div class="date">' . get_the_date() . '</div>';
+                    if ( get_comments_number() > 0 ) :
+                        echo '<div class="comments">';
+                                if ( get_comments_number() == 1 ) {
+                                    echo get_comments_number(); esc_html_e( ' Comentario', 'stroyka' );
+                                } else {
+                                    echo get_comments_number(); esc_html_e( ' Comentarios', 'stroyka' );
+                                }
+                        echo '</div>';
+                    endif;
                 ?>
             </div>
         </header>
         <section class="block">
-            <div class="content is-layout-constrained">
+            <div class="is-layout-constrained">
                 <?php the_content(); ?>
             </div>
             <div class="content content-tags">

@@ -9,60 +9,74 @@ header.block {
         overflow: hidden;
         border-radius: 1rem;
         corner-shape: squircle;
-        background: 
-            radial-gradient(circle at 50% 15%, #f2f2f2 0%, transparent 60%),
-            radial-gradient(circle at 80% 35%, #e6e6e6 0%, transparent 50%),
-            radial-gradient(circle at 20% 55%, #ededed 0%, transparent 50%),
-            radial-gradient(circle at 70% 75%, #d9d9d9 0%, transparent 55%),
-            radial-gradient(circle at 40% 90%, #cccccc 0%, transparent 60%),
-            #f5f5f5;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px inset;
 
-        & .blobpit {
-        overflow: hidden;
-        position: absolute;
-        inset: 0;
-        z-index:0;
-        }
-        & .blobpit::before, 
-        & .blobpit::after {
-        filter: blur(40px);
-            content: "";
-            width: 30vmax;
-            height: 30vmax;
+        & .backdrop {
+            background: 
+                radial-gradient(circle at 50% 15%, #f2f2f2 0%, transparent 60%),
+                radial-gradient(circle at 80% 35%, #e6e6e6 0%, transparent 50%),
+                radial-gradient(circle at 20% 55%, #ededed 0%, transparent 50%),
+                radial-gradient(circle at 70% 75%, #d9d9d9 0%, transparent 55%),
+                radial-gradient(circle at 40% 90%, #cccccc 0%, transparent 60%),
+                #f5f5f5;
+            overflow: hidden;
             position: absolute;
-            background: rgba(204, 204, 204, 0.7);
-            left: -20vmin;
-            top: -20vmin;
-            animation: morph 2s linear infinite alternate, spin 2s linear infinite;
-            z-index: 1;
-            will-change: border-radius, transform;
-            transform-origin: 55% 55%;
-            pointer-events: none; 
-        }
-        & .blobpit::after {
-            width: 70vmin;
-            height: 70vmin;
-            left: auto;
-            right: -10vmin;
-            top: auto;
-            bottom: 0;
-            animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
-            transform-origin: 20% 20%;
-        
+            inset: 0;
+            z-index: -1;
+
+            &:before, 
+            &:after {
+            filter: blur(40px);
+                content: "";
+                width: 30vmax;
+                height: 30vmax;
+                position: absolute;
+                background: rgba(204, 204, 204, 0.7);
+                left: -20vmin;
+                top: -20vmin;
+                animation: morph 2s linear infinite alternate, spin 2s linear infinite;
+                z-index: 1;
+                will-change: border-radius, transform;
+                transform-origin: 55% 55%;
+                pointer-events: none; 
+            }
+
+            &:after {
+                width: 70vmin;
+                height: 70vmin;
+                left: auto;
+                right: -10vmin;
+                top: auto;
+                bottom: 0;
+                animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
+                transform-origin: 20% 20%;
+            }
         }
 
         & .page-title {
+            text-align: center;
             position: relative;
             padding: 1rem 2rem;
             border-radius: 1rem;
             corner-shape: squircle;
             max-width: 40.313rem;
         }
+
+        & .latest-modified,
+        & .metadata {
+            font-size: var(--wp--preset--font-size--small);
+            position: absolute;
+            bottom: 10px;
+            left: 50%; transform: translateX(-50%);
+            padding: .25rem .5rem;
+            border-radius: 1rem;
+            corner-shape: squircle;
+        }
     }
 }
 
 .block {
-    & .content.is-layout-constrained {
+    & .is-layout-constrained {
         padding-bottom: 2.5rem;
     }
 }
