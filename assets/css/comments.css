@@ -1,0 +1,33 @@
+#reply-title {
+    font-size: var(--wp--preset--font-size--x-large);
+    margin-bottom: 1.2rem;
+}
+
+#commentform :is(.comment-notes,.comment-form-cookies-consent,.form-submit,.comment-form-comment,.logged-in-as) {
+    grid-column: 1 / -1;
+}
+
+#commentform {
+    display: grid; gap: 1.2rem;
+}
+
+@media(width > 48rem) {
+    #commentform {
+        grid-template-columns: repeat(3, 1fr);
+
+        & .comment-form-author {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        & .comment-form-email {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        &  .comment-form-url {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+    }
+}
