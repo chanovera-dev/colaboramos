@@ -1,0 +1,64 @@
+.block {
+    & .content-tags {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: .438rem;
+        padding-bottom: 2.5rem;
+
+        & .tag {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: .437rem;
+            font-size: var(--wp--preset--font-size--small);
+            padding: .188rem .438rem;
+            padding-left: 1.8rem;
+            border-radius: 1rem;
+            corner-shape: squircle;
+            background-color: light-dark(var(--green-lighter), var(--green-darker));
+
+            & svg {
+                position: absolute;
+                top: 75%;
+                left: 6%;
+                transform: translate(-50%, -50%);
+                width: 2rem;
+                height: 2rem;
+                opacity: .4;
+            }
+        }
+    }
+
+    & .content-author {
+        padding: 1.25rem;
+        margin-bottom: 2.5rem;
+        border: 0.063rem solid var(--wp--preset--color--accent-6);
+        border-radius: 2rem;
+        corner-shape: squircle;
+
+        & .author-name {
+            margin-bottom: 1rem;
+        }
+
+        & .avatar {
+            position: relative;
+            top: 0.313rem;
+            float: left;
+            shape-outside: margin-box;
+            border-radius: 1rem;
+            corner-shape: squircle;
+            margin: 0 1.25rem 0 0;
+        }
+
+        & .author-description {
+            font-size: var(--wp--preset--font-size--small);
+        }
+    }
+
+    & .content-comments {
+        padding-bottom: 2.5rem;
+    }
+}
