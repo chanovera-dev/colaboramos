@@ -40,7 +40,6 @@ function colaboramos_enqueue_script( $handle, $path ) {
  * @return void
  */
 function page_template() {
-    $directory = get_template_directory();
     $assets_path = '/assets';
 
     if ( is_page() or is_single() ) {
@@ -70,3 +69,21 @@ function page_template() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'page_template' );
+
+function posts_styles() {
+    $assets_path = '/assets';
+
+    if ( is_home() or is_archive() or is_search() ) {
+        $posts_css = "$assets_path/css/posts.css";
+        $pagination_css = "$assets_path/css/pagination.css";
+        $blur_typing = "$assets_path/js/blur-typing.js";
+
+        colaboramos_enqueue_style( 'posts', $posts_css );
+        colaboramos_enqueue_script( 'blur-typing', $blur_typing );
+        
+        if ( paginate_links() ) {
+            colaboramos_enqueue_style( 'pagination', $pagination_css );
+        }
+    }
+}
+add_action( 'wp_enqueue_scripts', 'posts_styles' );
