@@ -32,9 +32,12 @@ function colaboramos_enqueue_script( $handle, $path ) {
 }
 
 /**
- * Enqueues styles specifically for Single Post/Page
- * 
- * Loads custom CSS file only when viewing single post/page
+ * Enqueues styles and scripts for single posts and pages.
+ *
+ * Loads page-specific assets when viewing single posts or pages.
+ * Includes optional styles for featured images, related posts,
+ * and comments, as well as JS effects such as parallax and blur typing.
+ * Related posts and comment styles are loaded conditionally.
  *
  * @since 1.0.0
  * @return void
@@ -81,6 +84,16 @@ function page_template() {
 }
 add_action( 'wp_enqueue_scripts', 'page_template' );
 
+/**
+ * Enqueues styles and scripts for post listings pages.
+ *
+ * Loads specific CSS and JS assets for the blog home, archives, 
+ * and search results pages. Includes pagination styles only 
+ * when pagination links are present.
+ *
+ * @since 1.0.0
+ * @return void
+ */
 function posts_styles() {
     $assets_path = '/assets';
 
