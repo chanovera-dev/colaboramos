@@ -24,6 +24,10 @@ header.block {
 }
 
 .block {
+    &.container--related-posts {
+        background-color: light-dark(var(--background-secondary-light), var(--background-secondary-dark));
+    }
+
     & .content-tags {
         width: min(100% - 2.5rem, 40.313rem) !important;
         display: flex;
@@ -31,6 +35,23 @@ header.block {
         flex-wrap: wrap;
         gap: .438rem;
         padding-bottom: 2.5rem;
+    }
+
+    & .content.related-posts--title {
+        text-align: center;
+        padding-top: 2.5rem;
+        padding-bottom: 1.25rem;
+        grid-template-columns: 1fr !important;
+    }
+
+    & .content.related-posts--list {
+        padding-bottom: 3rem;
+
+        & .post {
+            & .backdrop {
+                background-color: light-dark(var(--background-base-light), var(--background-base-dark)) !important;
+            }
+        }
     }
 
     & .content-author {
