@@ -64,8 +64,8 @@
                     }
                 ?>
                 <div class="members-options">
-                    <a href="#" class="signup">Registro</a>
-                    <a href="#" class="login">Login</a>
+                    <a href="#" class="button header-button header-register">Registro</a>
+                    <a href="#" class="button header-button ">Login</a>
                 </div>
                 <button class="menu-mobile__button" onclick="toggleMenuMobile()">
                     <span class="bar"></span>

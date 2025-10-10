@@ -92,3 +92,17 @@ header.block {
   to {
     transform: rotate(1turn); } 
 }
+
+@media (width < 31.25rem) {
+    header.block {
+        & .content {
+            aspect-ratio: inherit;
+
+            & .page-title {
+                margin-top: 5rem;
+                margin-bottom: 5rem;
+                border-radius: 0;
+            }
+        }
+    }
+}

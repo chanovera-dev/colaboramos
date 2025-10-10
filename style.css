@@ -201,6 +201,11 @@ body {
                 & .members-options {
                     display: grid;
                     text-align: right;
+
+                    & .button {
+                        padding: 0;
+                        border-color: transparent;
+                    }
                 }
             }
         }

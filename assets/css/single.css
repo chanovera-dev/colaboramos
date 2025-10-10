@@ -12,6 +12,13 @@ header.block {
                     opacity: .4;
                 }
             }
+
+            & .comments {
+                & span {
+                    display: inline-flex;
+                    width: 7px;
+                }
+            }
         }
     }
 }
@@ -24,30 +31,6 @@ header.block {
         flex-wrap: wrap;
         gap: .438rem;
         padding-bottom: 2.5rem;
-
-        & .tag {
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            gap: .437rem;
-            font-size: var(--wp--preset--font-size--small);
-            padding: .188rem .438rem;
-            padding-left: 1.8rem;
-            border-radius: 1rem;
-            corner-shape: squircle;
-            background-color: light-dark(var(--green-lighter), var(--green-darker));
-
-            & svg {
-                position: absolute;
-                top: 75%;
-                left: 6%;
-                transform: translate(-50%, -50%);
-                width: 2rem;
-                height: 2rem;
-                opacity: .4;
-            }
-        }
     }
 
     & .content-author {
@@ -80,5 +63,25 @@ header.block {
     & .content-comments {
         width: min(100% - 2.5rem, 768px) !important;
         padding-bottom: 2.5rem;
+    }
+}
+
+@media (width < 31.25rem) {
+    header.block {
+        & .content {
+            & .metadata {
+                display: grid;
+
+                & > div:not(:last-child) {
+                position: relative;
+
+                &:after {
+                    content: '';
+                    margin: 0;
+                    opacity: .4;
+                }
+            }
+            }
+        }
     }
 }
