@@ -108,6 +108,14 @@ body {
             padding: var(--padding-nav);
             gap: 1.25rem;
 
+            & .site-brand {
+                & .custom-logo-link {
+                    & .custom-logo {
+                        width: 32px;
+                    }
+                }
+            }
+
             & .main-navigation {
                 & .menu {
                     padding-left: 0;
