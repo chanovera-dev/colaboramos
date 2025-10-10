@@ -1,0 +1,24 @@
+.not-found {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.not-found *:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.not-found .not-found__icon svg {
+    background-color: light-dark(var(--background-base-dark), var(--background-base-light));
+    fill: light-dark(var(--text--dark), var(--text--light));
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+.not-found button svg {
+    width: 17px;
+    height: 17px;
+    position: relative;
+    top: -1px;
+}
