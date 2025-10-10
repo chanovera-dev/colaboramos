@@ -81,6 +81,7 @@ textarea {
 .button,
 #submit,
 .wpcf7-submit {
+    font-size: var(--wp--preset--font-size--medium);
     border: 1px solid var(--wp--preset--color--accent-6);
     border-radius: 1rem;
     corner-shape: squircle;
@@ -97,6 +98,14 @@ textarea {
 .small-button {
     padding: .188rem .438rem;
     font-size: var(--wp--preset--font-size--small);
+}
+
+.inactive-button {
+    opacity: .4;
+}
+
+.inactive-button:hover {
+    cursor: default !important;
 }
 
 .button:hover,
