@@ -31,6 +31,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     color: light-dark(var(--text--light), var(--text--dark));
+    background-color: light-dark(var(--background-base-light), var(--background-base-dark));
 }
 
 & .skip-link.screen-reader-text {
