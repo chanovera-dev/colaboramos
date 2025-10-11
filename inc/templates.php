@@ -65,14 +65,15 @@ function page_template() {
 
         if ( is_single() ) {
             colaboramos_enqueue_style( 'single', $single_css );
-            $related = get_posts( [
+
+            $related_posts = get_posts( [
                 'post__not_in' => [ $post_id ],
                 'posts_per_page' => 1,
                 'category__in' => wp_get_post_categories( $post_id ),
                 'tag__in' => wp_get_post_tags( $post_id, [ 'fields' => 'ids' ] ),
             ] );
 
-            if ( ! empty( $related ) ) {
+            if ( ! empty( $related_posts ) ) {
                 colaboramos_enqueue_style( 'related-posts', $related_css );
             }
 
