@@ -30,11 +30,11 @@ header.block {
 
     & .content-tags {
         width: min(100% - 2.5rem, 40.313rem) !important;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: .438rem;
         padding-bottom: 2.5rem;
+
+        & > *:not(:last-child) {
+            margin-right: 3px;
+        }
     }
 
     & .content.related-posts--title {

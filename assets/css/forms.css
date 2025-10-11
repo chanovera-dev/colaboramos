@@ -96,8 +96,13 @@ textarea {
 }
 
 .small-button {
-    padding: .188rem .438rem;
+    padding: 0 .438rem;
     font-size: var(--wp--preset--font-size--small);
+    gap: 5px;
+
+    & svg {
+        height: 0.8rem;
+    }
 }
 
 .inactive-button {
