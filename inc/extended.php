@@ -83,3 +83,21 @@ function custom_menu($item_output, $item, $depth, $args) {
     return $item_output;
 }
 add_filter('walker_nav_menu_start_el', 'custom_menu', 10, 4);
+
+ /**
+  * Add Google Tag Manager
+  */
+ function add_gtm_header() {
+    ?>
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-5K98JTFZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'GTM-5K98JTFZ', { 'transport_type': 'beacon', 'send_page_view': false });
+    </script>
+    <?php
+}
+add_action('wp_head', 'add_gtm_header');
